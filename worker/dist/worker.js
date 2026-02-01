@@ -1,25 +1,29 @@
 // Cloudflare Worker - Contact Form Handler
-// Service Worker format for direct API deployment
+// Service Worker format with proper secret access
+
+// Secrets are injected as globals by Cloudflare
+// TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID
 
 addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
+  event.respondWith(handleRequest(event.request, event))
 })
 
-async function handleRequest(request) {
-  // CORS headers
+async function handleRequest(request, event) {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
   }
 
-  // Handle preflight
   if (request.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders })
   }
 
   if (request.method !== 'POST') {
-    return new Response('Method not allowed', { status: 405 })
+    return new Response(JSON.stringify({ success: false, error: 'Method not allowed' }), { 
+      status: 405,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    })
   }
 
   try {
@@ -36,20 +40,47 @@ async function handleRequest(request) {
       })
     }
 
-    // Send via Telegram
-    const TELEGRAM_BOT_TOKEN = typeof TELEGRAM_BOT_TOKEN !== 'undefined' ? TELEGRAM_BOT_TOKEN : null
-    const TELEGRAM_CHAT_ID = typeof TELEGRAM_CHAT_ID !== 'undefined' ? TELEGRAM_CHAT_ID : null
+    // Access secrets from global scope
+    const botToken = typeof self.TELEGRAM_BOT_TOKEN !== 'undefined' ? self.TELEGRAM_BOT_TOKEN : null
+    const chatId = typeof self.TELEGRAM_CHAT_ID !== 'undefined' ? self.TELEGRAM_CHAT_ID : null
     
-    if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
-      const telegramMessage = `📧 New Contact Form Submission\n\n👤 Name: ${name}\n📧 Email: ${email}\n💬 Message:\n${message}\n\n🕐 Time: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Ho_Chi_Minh' })}`
+    if (!botToken || !chatId) {
+      return new Response(JSON.stringify({ 
+        success: false, 
+        error: 'Telegram not configured' 
+      }), { 
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      })
+    }
+    
+    const telegramMessage = `📧 New Contact Form Submission
 
-      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: telegramMessage
-        })
+👤 Name: ${name}
+📧 Email: ${email}
+💬 Message:
+${message}
+
+🕐 Time: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Ho_Chi_Minh' })}`
+
+    const telegramResponse = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: telegramMessage
+      })
+    })
+
+    if (!telegramResponse.ok) {
+      const errorData = await telegramResponse.text()
+      console.error('Telegram error:', errorData)
+      return new Response(JSON.stringify({ 
+        success: false, 
+        error: 'Failed to send message' 
+      }), { 
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       })
     }
 
@@ -61,6 +92,7 @@ async function handleRequest(request) {
     })
 
   } catch (error) {
+    console.error('Worker error:', error)
     return new Response(JSON.stringify({ 
       success: false, 
       error: error.message 
