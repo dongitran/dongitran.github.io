@@ -594,30 +594,55 @@
     </footer>
     
     <script>
-        // Contact form - opens email client securely
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
+        // FormSubmit.co - Sends directly to email (no page redirect)
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const name = document.getElementById('formName').value;
-            const email = document.getElementById('formEmail').value;
-            const message = document.getElementById('formMessage').value;
-            
-            const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-            
-            window.open(`mailto:dongtranthienio@gmail.com?subject=${subject}&body=${body}`, '_blank');
-            
-            // Show success message
             const btn = e.target.querySelector('button');
             const originalText = btn.innerHTML;
-            btn.innerHTML = '<span>Email App Opened!</span>';
-            btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            btn.innerHTML = '<span>Sending...</span>';
+            btn.disabled = true;
             
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = '';
-                e.target.reset();
-            }, 3000);
+            const formData = new FormData();
+            formData.append('name', document.getElementById('formName').value);
+            formData.append('email', document.getElementById('formEmail').value);
+            formData.append('message', document.getElementById('formMessage').value);
+            formData.append('_subject', 'New Contact from Portfolio');
+            formData.append('_captcha', 'false');
+            formData.append('_template', 'table');
+            
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/dongtranthienio@gmail.com', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success === "true") {
+                    btn.innerHTML = '<span>✅ Sent Successfully!</span>';
+                    btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                    e.target.reset();
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.style.background = '';
+                        btn.disabled = false;
+                    }, 3000);
+                } else {
+                    throw new Error(result.message || 'Failed to send');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                btn.innerHTML = '<span>❌ Error, try again</span>';
+                btn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            }
         });
     </script>
 </body>
