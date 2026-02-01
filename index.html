@@ -1,140 +1,118 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dong Tran | Senior Fullstack Developer</title>
-    <meta name="description" content="Dong Tran - Senior Fullstack Developer with 7+ years experience in NestJS, Node.js, Microservices, and Payment Systems">
+    <meta name="description" content="Dong Tran - Senior Fullstack Developer with 7+ years experience">
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        dark: {
-                            900: '#0a0a0f',
-                            800: '#12121a',
-                            700: '#1a1a2e',
-                            600: '#252542',
-                        },
-                        accent: {
-                            primary: '#6366f1',
-                            secondary: '#8b5cf6',
-                            glow: '#a855f7',
-                        }
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-                        'slide-up': 'slide-up 0.8s ease-out',
-                        'fade-in': 'fade-in 1s ease-out',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        'pulse-glow': {
-                            '0%, 100%': { opacity: 0.5, transform: 'scale(1)' },
-                            '50%': { opacity: 1, transform: 'scale(1.05)' },
-                        },
-                        'slide-up': {
-                            '0%': { opacity: 0, transform: 'translateY(30px)' },
-                            '100%': { opacity: 1, transform: 'translateY(0)' },
-                        },
-                        'fade-in': {
-                            '0%': { opacity: 0 },
-                            '100%': { opacity: 1 },
-                        }
+                        dark: { 900: '#0a0a0f', 800: '#12121a', 700: '#1a1a2e' },
+                        accent: { primary: '#6366f1', secondary: '#8b5cf6' }
                     }
                 }
             }
         }
     </script>
     
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
     <style>
-        :root {
-            --glass-bg: rgba(26, 26, 46, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
-        }
-        
-        body {
-            background: #0a0a0f;
-            color: #e2e8f0;
-            overflow-x: hidden;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0f; color: #e2e8f0; font-family: 'Inter', sans-serif; }
         
         .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
+            background: rgba(26, 26, 46, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
         
         .glass-card {
-            background: rgba(37, 37, 66, 0.4);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(37, 37, 66, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
         }
         
         .glass-card:hover {
-            background: rgba(37, 37, 66, 0.6);
+            background: rgba(37, 37, 66, 0.7);
             border-color: rgba(139, 92, 246, 0.3);
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
         }
         
         .gradient-text {
-            background: var(--accent-gradient);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
-        .gradient-border {
-            position: relative;
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            transition: all 0.3s ease;
         }
         
-        .gradient-border::before {
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+        
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.2s ease;
+        }
+        
+        .skill-tag:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+        
+        .timeline-line {
+            background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+        }
+        
+        .nav-link { position: relative; }
+        .nav-link::after {
             content: '';
             position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 1px;
-            background: var(--accent-gradient);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0f; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #6366f1, #8b5cf6); border-radius: 4px; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
         }
         
         .blob {
             position: absolute;
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.4;
             animation: blob-float 20s infinite ease-in-out;
         }
         
@@ -144,209 +122,54 @@
             50% { transform: translate(-20px, 20px) scale(0.9); }
             75% { transform: translate(30px, 10px) scale(1.05); }
         }
-        
-        .skill-tag {
-            transition: all 0.3s ease;
-        }
-        
-        .skill-tag:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-        }
-        
-        .timeline-line {
-            background: linear-gradient(to bottom, #6366f1, #8b5cf6, #a855f7);
-        }
-        
-        .timeline-dot {
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-gradient);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .code-block {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        .typing-cursor::after {
-            content: '|';
-            animation: blink 1s step-end infinite;
-            color: #8b5cf6;
-        }
-        
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #0a0a0f;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #6366f1, #8b5cf6);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #8b5cf6, #a855f7);
-        }
-        
-        .project-card {
-            overflow: hidden;
-        }
-        
-        .project-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, transparent 0%, rgba(139, 92, 246, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .project-card:hover::before {
-            opacity: 1;
-        }
-        
-        .contact-input {
-            background: rgba(37, 37, 66, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s ease;
-        }
-        
-        .contact-input:focus {
-            outline: none;
-            border-color: rgba(139, 92, 246, 0.5);
-            background: rgba(37, 37, 66, 0.5);
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
-        }
-        
-        .btn-primary {
-            background: var(--accent-gradient);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
-        }
-        
-        .stats-number {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
     </style>
 </head>
 <body class="antialiased">
     <!-- Background Blobs -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="blob w-96 h-96 bg-indigo-600/30 top-0 left-0" style="animation-delay: 0s;"></div>
-        <div class="blob w-80 h-80 bg-purple-600/30 top-1/3 right-0" style="animation-delay: -5s;"></div>
-        <div class="blob w-72 h-72 bg-violet-600/30 bottom-0 left-1/3" style="animation-delay: -10s;"></div>
-        <div class="blob w-64 h-64 bg-fuchsia-600/20 top-2/3 right-1/4" style="animation-delay: -15s;"></div>
+        <div class="blob w-96 h-96 bg-indigo-600/20 top-0 left-0" style="animation-delay: 0s;"></div>
+        <div class="blob w-80 h-80 bg-purple-600/20 top-1/3 right-0" style="animation-delay: -5s;"></div>
+        <div class="blob w-72 h-72 bg-violet-600/20 bottom-0 left-1/3" style="animation-delay: -10s;"></div>
     </div>
     
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+    <nav class="fixed top-0 left-0 right-0 z-50">
         <div class="glass mx-4 mt-4 rounded-2xl px-6 py-4">
             <div class="flex items-center justify-between max-w-7xl mx-auto">
-                <a href="#" class="text-2xl font-bold gradient-text font-sans">DT.</a>
-                
-                <!-- Desktop Navigation -->
+                <a href="#" class="text-2xl font-bold gradient-text">DT.</a>
                 <div class="hidden md:flex items-center gap-8">
-                    <a href="#about" class="nav-link text-sm text-slate-300 hover:text-white transition-colors">About</a>
-                    <a href="#experience" class="nav-link text-sm text-slate-300 hover:text-white transition-colors">Experience</a>
-                    <a href="#skills" class="nav-link text-sm text-slate-300 hover:text-white transition-colors">Skills</a>
-                    <a href="#projects" class="nav-link text-sm text-slate-300 hover:text-white transition-colors">Projects</a>
+                    <a href="#about" class="nav-link text-sm text-slate-300 hover:text-white">About</a>
+                    <a href="#experience" class="nav-link text-sm text-slate-300 hover:text-white">Experience</a>
+                    <a href="#skills" class="nav-link text-sm text-slate-300 hover:text-white">Skills</a>
+                    <a href="#projects" class="nav-link text-sm text-slate-300 hover:text-white">Projects</a>
                     <a href="#contact" class="btn-primary px-6 py-2.5 rounded-full text-sm font-medium text-white">Contact</a>
                 </div>
-                
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden text-white" id="mobile-menu-btn">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div class="hidden glass mx-4 mt-2 rounded-2xl p-6 md:hidden" id="mobile-menu">
-            <div class="flex flex-col gap-4">
-                <a href="#about" class="text-slate-300 hover:text-white transition-colors">About</a>
-                <a href="#experience" class="text-slate-300 hover:text-white transition-colors">Experience</a>
-                <a href="#skills" class="text-slate-300 hover:text-white transition-colors">Skills</a>
-                <a href="#projects" class="text-slate-300 hover:text-white transition-colors">Projects</a>
-                <a href="#contact" class="btn-primary px-6 py-3 rounded-full text-center text-white font-medium">Contact</a>
             </div>
         </div>
     </nav>
     
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 px-4">
+    <section class="relative min-h-screen flex items-center justify-center pt-24 px-4">
         <div class="max-w-7xl mx-auto w-full">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Left Content -->
-                <div class="text-center lg:text-left order-2 lg:order-1">
-                    <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 hero-element">
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
                         <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
                         <span class="text-sm text-slate-300">Available for opportunities</span>
                     </div>
                     
-                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 hero-element">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
                         <span class="text-white">Hi, I'm</span><br>
                         <span class="gradient-text">Dong Tran</span>
                     </h1>
                     
-                    <div class="text-xl md:text-2xl text-slate-400 mb-6 font-mono hero-element">
-                        <span class="typing-cursor" id="typing-text"></span>
-                    </div>
+                    <p class="text-xl text-slate-400 mb-6 font-mono">Senior Fullstack Developer</p>
                     
-                    <p class="text-slate-400 text-lg mb-8 max-w-lg mx-auto lg:mx-0 hero-element">
-                        Senior Fullstack Developer crafting scalable systems with 7+ years of experience. 
-                        Specializing in microservices, payment integrations, and AI-powered solutions.
+                    <p class="text-slate-400 text-lg mb-8 max-w-lg mx-auto lg:mx-0">
+                        7+ years crafting scalable systems. Specialized in microservices, payment integrations, and AI-powered solutions.
                     </p>
                     
-                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start hero-element">
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
                         <a href="#contact" class="btn-primary px-8 py-4 rounded-full font-medium text-white inline-flex items-center gap-2">
                             <span>Get in Touch</span>
                             <i data-lucide="arrow-right" class="w-5 h-5"></i>
@@ -357,70 +180,41 @@
                         </a>
                     </div>
                     
-                    <!-- Stats -->
-                    <div class="grid grid-cols-3 gap-6 mt-12 hero-element">
+                    <div class="grid grid-cols-3 gap-6 mt-12">
                         <div class="text-center">
-                            <div class="text-3xl md:text-4xl font-bold stats-number">7+</div>
+                            <div class="text-3xl md:text-4xl font-bold gradient-text">7+</div>
                             <div class="text-sm text-slate-500 mt-1">Years Exp</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl md:text-4xl font-bold stats-number">132</div>
+                            <div class="text-3xl md:text-4xl font-bold gradient-text">132</div>
                             <div class="text-sm text-slate-500 mt-1">Repositories</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl md:text-4xl font-bold stats-number">50+</div>
+                            <div class="text-3xl md:text-4xl font-bold gradient-text">50+</div>
                             <div class="text-sm text-slate-500 mt-1">Projects</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Right Content - Code Block -->
-                <div class="order-1 lg:order-2 hero-element">
-                    <div class="glass rounded-2xl p-6 md:p-8 code-block text-sm md:text-base relative">
-                        <div class="flex items-center gap-2 mb-6">
+                <div class="hidden lg:block">
+                    <div class="glass rounded-2xl p-6 font-mono text-sm relative">
+                        <div class="flex items-center gap-2 mb-4">
                             <div class="w-3 h-3 rounded-full bg-red-500"></div>
                             <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                             <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            <span class="ml-4 text-slate-500 text-xs">dong-tran.ts</span>
                         </div>
-                        
-                        <pre class="text-slate-300 overflow-x-auto"><code><span class="text-purple-400">const</span> <span class="text-blue-400">developer</span> = {
-  <span class="text-sky-300">name</span>: <span class="text-green-400">'Đông Trần'</span>,
-  <span class="text-sky-300">title</span>: <span class="text-green-400">'Senior Fullstack Developer'</span>,
-  <span class="text-sky-300">location</span>: <span class="text-green-400">'Vietnam 🇻🇳'</span>,
-  <span class="text-sky-300">company</span>: <span class="text-green-400">'UrBox'</span>,
-  <span class="text-sky-300">experience</span>: <span class="text-orange-400">7</span> + <span class="text-green-400">' years'</span>,
-  
+                        <pre class="text-slate-300"><code><span class="text-purple-400">const</span> <span class="text-blue-400">developer</span> = {
+  <span class="text-sky-300">name</span>: <span class="text-green-400">'Dong Tran'</span>,
+  <span class="text-sky-300">title</span>: <span class="text-green-400">'Senior Fullstack'</span>,
   <span class="text-sky-300">skills</span>: [
-    <span class="text-green-400">'NestJS'</span>, <span class="text-green-400">'Node.js'</span>, 
-    <span class="text-green-400">'TypeScript'</span>, <span class="text-green-400">'PostgreSQL'</span>,
-    <span class="text-green-400">'MongoDB'</span>, <span class="text-green-400">'Kafka'</span>,
-    <span class="text-green-400">'Docker'</span>, <span class="text-green-400">'Kubernetes'</span>
+    <span class="text-green-400">'NestJS'</span>, <span class="text-green-400">'Node.js'</span>,
+    <span class="text-green-400">'TypeScript'</span>, <span class="text-green-400">'PostgreSQL'</span>
   ],
-  
-  <span class="text-sky-300">passion</span>: <span class="text-green-400">'Building scalable systems'</span>,
-  
-  <span class="text-purple-400">sayHi</span>: <span class="text-yellow-400">function</span>() {
-    <span class="text-purple-400">return</span> <span class="text-green-400">"Let's build something amazing! 🚀"</span>;
-  }
+  <span class="text-sky-300">passion</span>: <span class="text-green-400">'Building scalable systems'</span>
 };</code></pre>
-                        
-                        <!-- Floating Elements -->
-                        <div class="absolute -top-4 -right-4 glass px-4 py-2 rounded-lg text-xs animate-float">
-                            <span class="text-purple-400">const</span> <span class="text-blue-400">passion</span> = 💜
-                        </div>
-                        
-                        <div class="absolute -bottom-4 -left-4 glass px-4 py-2 rounded-lg text-xs animate-float" style="animation-delay: -3s;">
-                            <i data-lucide="zap" class="w-4 h-4 text-yellow-400 inline"></i> Performance First
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-            <i data-lucide="chevron-down" class="w-6 h-6 text-slate-500"></i>
         </div>
     </section>
     
@@ -428,50 +222,156 @@
     <section id="about" class="py-24 px-4">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <span class="text-purple-400 text-sm font-medium tracking-wider uppercase">About Me</span>
+                <span class="text-purple-400 text-sm font-medium uppercase">About Me</span>
                 <h2 class="text-4xl md:text-5xl font-bold mt-4 gradient-text">Who I Am</h2>
             </div>
             
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6 about-element">
+                <div class="space-y-6">
                     <p class="text-slate-300 text-lg leading-relaxed">
-                        I'm a passionate Senior Fullstack Developer based in Vietnam, currently leading technical initiatives at <span class="text-purple-400 font-medium">UrBox</span>. With over 7 years of experience spanning from embedded systems to modern web architectures, I bring a unique perspective to solving complex technical challenges.
+                        I'm a passionate Senior Fullstack Developer based in Vietnam, currently at <span class="text-purple-400 font-medium">UrBox</span>. With 7+ years of experience from embedded systems to modern web architectures.
                     </p>
                     <p class="text-slate-400 leading-relaxed">
-                        My journey began with PLC programming and industrial automation, evolved through firmware development for IoT systems, and now focuses on building scalable microservices and payment infrastructure. This diverse background gives me deep insight into the entire technology stack.
+                        My journey began with PLC programming and industrial automation, evolved through firmware development for IoT systems, and now focuses on building scalable microservices and payment infrastructure.
                     </p>
-                    <p class="text-slate-400 leading-relaxed">
-                        I'm particularly passionate about system design, payment integrations, and leveraging AI to automate complex workflows. When I'm not coding, you'll find me exploring new technologies and contributing to open-source projects.
-                    </p>
-                    
                     <div class="flex flex-wrap gap-3 pt-4">
-                        <span class="glass px-4 py-2 rounded-full text-sm text-slate-300">Problem Solver</span>
-                        <span class="glass px-4 py-2 rounded-full text-sm text-slate-300">Team Leader</span>
-                        <span class="glass px-4 py-2 rounded-full text-sm text-slate-300">Open Source</span>
-                        <span class="glass px-4 py-2 rounded-full text-sm text-slate-300">Continuous Learner</span>
+                        <span class="glass px-4 py-2 rounded-full text-sm">Problem Solver</span>
+                        <span class="glass px-4 py-2 rounded-full text-sm">Team Leader</span>
+                        <span class="glass px-4 py-2 rounded-full text-sm">Open Source</span>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-4 about-element">
+                <div class="grid grid-cols-2 gap-4">
                     <div class="glass-card rounded-2xl p-6 text-center">
                         <i data-lucide="code-2" class="w-10 h-10 text-purple-400 mx-auto mb-4"></i>
                         <h3 class="text-xl font-bold text-white mb-2">Clean Code</h3>
-                        <p class="text-sm text-slate-400">Writing maintainable, scalable code that stands the test of time</p>
+                        <p class="text-sm text-slate-400">Maintainable, scalable solutions</p>
                     </div>
                     <div class="glass-card rounded-2xl p-6 text-center">
                         <i data-lucide="rocket" class="w-10 h-10 text-purple-400 mx-auto mb-4"></i>
                         <h3 class="text-xl font-bold text-white mb-2">Performance</h3>
-                        <p class="text-sm text-slate-400">Optimizing systems for speed, reliability, and efficiency</p>
+                        <p class="text-sm text-slate-400">Optimized for speed</p>
                     </div>
                     <div class="glass-card rounded-2xl p-6 text-center">
                         <i data-lucide="shield-check" class="w-10 h-10 text-purple-400 mx-auto mb-4"></i>
                         <h3 class="text-xl font-bold text-white mb-2">Security</h3>
-                        <p class="text-sm text-slate-400">Building secure systems, especially for financial applications</p>
+                        <p class="text-sm text-slate-400">Financial-grade systems</p>
                     </div>
                     <div class="glass-card rounded-2xl p-6 text-center">
                         <i data-lucide="users" class="w-10 h-10 text-purple-400 mx-auto mb-4"></i>
                         <h3 class="text-xl font-bold text-white mb-2">Collaboration</h3>
-                        <p class="text-sm text-slate-400">Working effectively with cross-functional teams</p>
+                        <p class="text-sm text-slate-400">Cross-functional teams</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section - FIXED -->
+    <section id="skills" class="py-24 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-purple-400 text-sm font-medium uppercase">Skills</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-4 gradient-text">Tech Stack</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Backend -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Backend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">NestJS</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Node.js</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">TypeScript</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">TypeORM</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">REST API</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Microservices</span>
+                    </div>
+                </div>
+                
+                <!-- Database -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-400"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Database</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">PostgreSQL</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">MongoDB</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Redis</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Kafka</span>
+                    </div>
+                </div>
+                
+                <!-- DevOps -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><path d="M17.5 19c0-1.7-1.3-3-3-3h-11c-1.7 0-3 1.3-3 3 0 1.7 1.3 3 3 3h11c1.7 0 3-1.3 3-3z"></path><path d="M17.5 5c0-1.7-1.3-3-3-3h-11c-1.7 0-3 1.3-3 3 0 1.7 1.3 3 3 3h11c1.7 0 3-1.3 3-3z"></path><path d="M17.5 12c0-1.7-1.3-3-3-3h-11c-1.7 0-3 1.3-3 3 0 1.7 1.3 3 3 3h11c1.7 0 3-1.3 3-3z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">DevOps</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">GitHub Actions</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Docker</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Kubernetes</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">OpenTelemetry</span>
+                    </div>
+                </div>
+                
+                <!-- Payment -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-400"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Payment Systems</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">CyberSource</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">VPBank</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">ACB</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">VCB</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Visa Loyalty</span>
+                    </div>
+                </div>
+                
+                <!-- AI -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-pink-400"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">AI/Automation</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">AI Agents</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Browser Automation</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Playwright</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Moltbot</span>
+                    </div>
+                </div>
+                
+                <!-- Embedded -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-400"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><path d="M9 9h6v6H9z"></path><path d="M9 1v3"></path><path d="M15 1v3"></path><path d="M9 20v3"></path><path d="M15 20v3"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Embedded/IoT</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">PLC</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">UART</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">SPI</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Modbus</span>
                     </div>
                 </div>
             </div>
@@ -482,239 +382,57 @@
     <section id="experience" class="py-24 px-4">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <span class="text-purple-400 text-sm font-medium tracking-wider uppercase">Experience</span>
+                <span class="text-purple-400 text-sm font-medium uppercase">Experience</span>
                 <h2 class="text-4xl md:text-5xl font-bold mt-4 gradient-text">Career Journey</h2>
             </div>
             
-            <div class="relative max-w-4xl mx-auto">
-                <!-- Timeline Line -->
-                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 timeline-line transform md:-translate-x-1/2"></div>
-                
-                <!-- Experience Items -->
-                <div class="space-y-12">
-                    <!-- UrBox -->
-                    <div class="relative flex flex-col md:flex-row items-start experience-item">
-                        <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-purple-500 timeline-dot transform md:-translate-x-1/2 mt-1.5"></div>
-                        
-                        <div class="pl-12 md:pl-0 md:w-1/2 md:pr-12 md:text-right">
-                            <span class="text-purple-400 text-sm font-medium">Apr 2022 - Present</span>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- UrBox -->
+                <div class="glass-card rounded-2xl p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Senior Fullstack Developer</h3>
+                            <p class="text-purple-400 font-medium">UrBox</p>
                         </div>
-                        
-                        <div class="pl-12 md:pl-12 md:w-1/2 mt-2 md:mt-0">
-                            <div class="glass-card rounded-2xl p-6">
-                                <h3 class="text-xl font-bold text-white mb-1">Senior Fullstack Developer</h3>
-                                <p class="text-purple-400 font-medium mb-4">UrBox</p>
-                                <ul class="space-y-2 text-slate-400 text-sm">
-                                    <li class="flex items-start gap-2">
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                        <span>Architected microservices with NestJS, TypeORM, PostgreSQL, MongoDB, Kafka</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                        <span>Integrated CyberSource payment gateway for secure transactions</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                        <span>Built whitelabel payment systems (VPBank, ACB, VCB, JCB)</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                        <span>Developed Visa loyalty system integration</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                        <span>Optimized CI/CD pipelines (3+ min → &lt;1 min) with GitHub Actions</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                        <span>Implemented OpenTelemetry distributed tracing & Playwright testing</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        <span class="text-slate-500 text-sm">Apr 2022 - Present</span>
                     </div>
-                    
-                    <!-- IDEA Technology -->
-                    <div class="relative flex flex-col md:flex-row items-start experience-item">
-                        <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-purple-500 timeline-dot transform md:-translate-x-1/2 mt-1.5"></div>
-                        
-                        <div class="pl-12 md:pl-0 md:w-1/2 md:pr-12 md:text-right">
-                            <div class="glass-card rounded-2xl p-6">
-                                <h3 class="text-xl font-bold text-white mb-1">Firmware Team Lead</h3>
-                                <p class="text-purple-400 font-medium mb-4">IDEA Technology</p>
-                                <ul class="space-y-2 text-slate-400 text-sm">
-                                    <li class="flex items-start gap-2 md:flex-row-reverse">
-                                        <span>Led development of AGV systems and autonomous navigation</span>
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                    </li>
-                                    <li class="flex items-start gap-2 md:flex-row-reverse">
-                                        <span>Designed smart vending machine firmware and payment integration</span>
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                    </li>
-                                    <li class="flex items-start gap-2 md:flex-row-reverse">
-                                        <span>Built IoT monitoring systems for real-time data collection</span>
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                    </li>
-                                    <li class="flex items-start gap-2 md:flex-row-reverse">
-                                        <span>Implemented UART, SPI, I2C, Modbus communication protocols</span>
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="pl-12 md:pl-12 md:w-1/2 mt-2 md:mt-0">
-                            <span class="text-purple-400 text-sm font-medium">Apr 2018 - Mar 2022</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Truong Phat Plastic -->
-                    <div class="relative flex flex-col md:flex-row items-start experience-item">
-                        <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-purple-500 timeline-dot transform md:-translate-x-1/2 mt-1.5"></div>
-                        
-                        <div class="pl-12 md:pl-0 md:w-1/2 md:pr-12 md:text-right">
-                            <span class="text-purple-400 text-sm font-medium">Mar 2017 - Mar 2018</span>
-                        </div>
-                        
-                        <div class="pl-12 md:pl-12 md:w-1/2 mt-2 md:mt-0">
-                            <div class="glass-card rounded-2xl p-6">
-                                <h3 class="text-xl font-bold text-white mb-1">Embedded Programming Engineer</h3>
-                                <p class="text-purple-400 font-medium mb-4">Truong Phat Plastic</p>
-                                <ul class="space-y-2 text-slate-400 text-sm">
-                                    <li class="flex items-start gap-2">
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                        <span>Programmed PLCs for industrial automation systems</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                        <span>Designed control systems for manufacturing processes</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                        <span>Implemented HMI interfaces for operator control</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-purple-400 text-sm font-medium tracking-wider uppercase">Skills</span>
-                <h2 class="text-4xl md:text-5xl font-bold mt-4 gradient-text">Tech Stack</h2>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Backend -->
-                <div class="glass-card rounded-2xl p-6 skill-card">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center">
-                            <i data-lucide="server" class="w-6 h-6 text-indigo-400"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Backend</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">NestJS</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">Node.js</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">TypeScript</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">TypeORM</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">REST API</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">Microservices</span>
-                    </div>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-purple-400 mt-1">•</span><span>Microservices with NestJS, TypeORM, PostgreSQL, MongoDB, Kafka</span></li>
+                        <li class="flex items-start gap-2"><span class="text-purple-400 mt-1">•</span><span>CyberSource payment gateway integration</span></li>
+                        <li class="flex items-start gap-2"><span class="text-purple-400 mt-1">•</span><span>Whitelabel payment systems (VPBank, ACB, VCB, JCB)</span></li>
+                        <li class="flex items-start gap-2"><span class="text-purple-400 mt-1">•</span><span>CI/CD optimization: 3+ min → &lt;1 min</span></li>
+                    </ul>
                 </div>
                 
-                <!-- Database -->
-                <div class="glass-card rounded-2xl p-6 skill-card">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
-                            <i data-lucide="database" class="w-6 h-6 text-purple-400"></i>
+                <!-- IDEA -->
+                <div class="glass-card rounded-2xl p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Firmware Team Lead</h3>
+                            <p class="text-purple-400 font-medium">IDEA Technology</p>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Database</h3>
+                        <span class="text-slate-500 text-sm">Apr 2018 - Mar 2022</span>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">PostgreSQL</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">MongoDB</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">Redis</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">Kafka</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">TypeORM</span>
-                    </div>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-purple-400 mt-1">•</span><span>AGV systems and autonomous navigation</span></li>
+                        <li class="flex items-start gap-2"><span class="text-purple-400 mt-1">•</span><span>Smart vending machine firmware</span></li>
+                        <li class="flex items-start gap-2"><span class="text-purple-400 mt-1">•</span><span>IoT monitoring systems</span></li>
+                    </ul>
                 </div>
                 
-                <!-- DevOps -->
-                <div class="glass-card rounded-2xl p-6 skill-card">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center">
-                            <i data-lucide="cloud" class="w-6 h-6 text-cyan-400"></i>
+                <!-- Truong Phat -->
+                <div class="glass-card rounded-2xl p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Embedded Engineer</h3>
+                            <p class="text-purple-400 font-medium">Truong Phat Plastic</p>
                         </div>
-                        <h3 class="text-xl font-bold text-white">DevOps</h3>
+                        <span class="text-slate-500 text-sm">Mar 2017 - Mar 2018</span>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">GitHub Actions</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">Docker</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">Kubernetes</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">OpenTelemetry</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">CI/CD</span>
-                    </div>
-                </div>
-                
-                <!-- Payment Systems -->
-                <div class="glass-card rounded-2xl p-6 skill-card">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center">
-                            <i data-lucide="credit-card" class="w-6 h-6 text-green-400"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Payment Systems</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">CyberSource</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">Whitelabel</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">VPBank</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">ACB</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">VCB</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">JCB</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">Visa Loyalty</span>
-                    </div>
-                </div>
-                
-                <!-- AI/Automation -->
-                <div class="glass-card rounded-2xl p-6 skill-card">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center">
-                            <i data-lucide="brain" class="w-6 h-6 text-pink-400"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">AI/Automation</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">AI Agents</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">Browser Automation</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">Playwright</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">Moltbot</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">Clawdbot</span>
-                    </div>
-                </div>
-                
-                <!-- Embedded/IoT -->
-                <div class="glass-card rounded-2xl p-6 skill-card">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center">
-                            <i data-lucide="cpu" class="w-6 h-6 text-orange-400"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Embedded/IoT</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">PLC Programming</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">UART</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">SPI</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">I2C</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">Modbus</span>
-                        <span class="skill-tag glass px-3 py-1.5 rounded-lg text-sm text-slate-300">IoT Systems</span>
-                    </div>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-purple-400 mt-1">•</span><span>PLC programming for industrial automation</span></li>
+                        <li class="flex items-start gap-2"><span class="text-purple-400 mt-1">•</span><span>Manufacturing process control systems</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -724,111 +442,48 @@
     <section id="projects" class="py-24 px-4">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <span class="text-purple-400 text-sm font-medium tracking-wider uppercase">Portfolio</span>
+                <span class="text-purple-400 text-sm font-medium uppercase">Portfolio</span>
                 <h2 class="text-4xl md:text-5xl font-bold mt-4 gradient-text">Featured Projects</h2>
             </div>
             
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- UrAgent -->
-                <div class="project-card glass-card rounded-2xl p-6 relative group">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                            <i data-lucide="bot" class="w-7 h-7 text-white"></i>
-                        </div>
-                        <a href="https://github.com/dongitran/UrAgent" target="_blank" class="glass p-2 rounded-lg hover:bg-white/10 transition-colors">
-                            <i data-lucide="external-link" class="w-5 h-5 text-slate-400"></i>
-                        </a>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-2">UrAgent</h3>
-                    <p class="text-slate-400 mb-4">Personal AI assistant framework built with TypeScript. Designed to automate daily tasks and streamline workflows through intelligent agent-based architecture.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs glass px-3 py-1 rounded-full text-slate-300">TypeScript</span>
-                        <span class="text-xs glass px-3 py-1 rounded-full text-slate-300">AI</span>
-                        <span class="text-xs glass px-3 py-1 rounded-full text-slate-300">Automation</span>
+                <div class="glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">UrAgent</h3>
+                    <p class="text-slate-400 text-sm mb-4">Personal AI assistant framework with TypeScript</p>
+                    <div class="flex gap-2">
+                        <span class="text-xs glass px-3 py-1 rounded-full">TypeScript</span>
+                        <span class="text-xs glass px-3 py-1 rounded-full">AI</span>
                     </div>
                 </div>
-                
-                <!-- ai-agent-config -->
-                <div class="project-card glass-card rounded-2xl p-6 relative group">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
-                            <i data-lucide="settings-2" class="w-7 h-7 text-white"></i>
-                        </div>
-                        <a href="https://github.com/dongitran/ai-agent-config" target="_blank" class="glass p-2 rounded-lg hover:bg-white/10 transition-colors">
-                            <i data-lucide="external-link" class="w-5 h-5 text-slate-400"></i>
-                        </a>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-2">ai-agent-config</h3>
-                    <p class="text-slate-400 mb-4">Configuration management system for AI Agent skills and workflows. Enables modular, scalable agent capabilities with easy-to-manage configurations.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs glass px-3 py-1 rounded-full text-slate-300">AI</span>
-                        <span class="text-xs glass px-3 py-1 rounded-full text-slate-300">Configuration</span>
-                        <span class="text-xs glass px-3 py-1 rounded-full text-slate-300">Workflows</span>
+                <div class="glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">ai-agent-config</h3>
+                    <p class="text-slate-400 text-sm mb-4">AI Agent configuration management system</p>
+                    <div class="flex gap-2">
+                        <span class="text-xs glass px-3 py-1 rounded-full">AI</span>
+                        <span class="text-xs glass px-3 py-1 rounded-full">Config</span>
                     </div>
                 </div>
-                
-                <!-- browser-use -->
-                <div class="project-card glass-card rounded-2xl p-6 relative group">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
-                            <i data-lucide="globe" class="w-7 h-7 text-white"></i>
-                        </div>
-                        <a href="https://github.com/dongitran/browser-use" target="_blank" class="glass p-2 rounded-lg hover:bg-white/10 transition-colors">
-                            <i data-lucide="external-link" class="w-5 h-5 text-slate-400"></i>
-                        </a>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-2">browser-use</h3>
-                    <p class="text-slate-400 mb-4">Make websites accessible for AI agents. A bridge layer that transforms web interfaces into structured, machine-readable formats for automated interaction.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs glass px-3 py-1 rounded-full text-slate-300">Browser</span>
-                        <span class="text-xs glass px-3 py-1 rounded-full text-slate-300">Automation</span>
-                        <span class="text-xs glass px-3 py-1 rounded-full text-slate-300">AI Agents</span>
+                <div class="glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">browser-use</h3>
+                    <p class="text-slate-400 text-sm mb-4">Make websites accessible for AI agents</p>
+                    <div class="flex gap-2">
+                        <span class="text-xs glass px-3 py-1 rounded-full">Browser</span>
+                        <span class="text-xs glass px-3 py-1 rounded-full">Automation</span>
                     </div>
                 </div>
-                
-                <!-- wedding-invitation -->
-                <div class="project-card glass-card rounded-2xl p-6 relative group">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center">
-                            <i data-lucide="heart" class="w-7 h-7 text-white"></i>
-                        </div>
-                        <a href="https://github.com/dongitran/wedding-invitation" target="_blank" class="glass p-2 rounded-lg hover:bg-white/10 transition-colors">
-                            <i data-lucide="external-link" class="w-5 h-5 text-slate-400"></i>
-                        </a>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-2">wedding-invitation</h3>
-                    <p class="text-slate-400 mb-4">Beautiful wedding invitation website with elegant animations and responsive design. A personal project showcasing frontend development skills.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs glass px-3 py-1 rounded-full text-slate-300">HTML/CSS</span>
-                        <span class="text-xs glass px-3 py-1 rounded-full text-slate-300">JavaScript</span>
-                        <span class="text-xs glass px-3 py-1 rounded-full text-slate-300">Animations</span>
+                <div class="glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">wedding-invitation</h3>
+                    <p class="text-slate-400 text-sm mb-4">Beautiful wedding website with animations</p>
+                    <div class="flex gap-2">
+                        <span class="text-xs glass px-3 py-1 rounded-full">HTML/CSS</span>
+                        <span class="text-xs glass px-3 py-1 rounded-full">JavaScript</span>
                     </div>
                 </div>
             </div>
             
-            <!-- GitHub Stats -->
-            <div class="mt-12 glass-card rounded-2xl p-8 text-center">
-                <h3 class="text-2xl font-bold text-white mb-6">GitHub Activity</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div>
-                        <div class="text-4xl font-bold stats-number mb-2">132</div>
-                        <div class="text-slate-400">Repositories</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-bold stats-number mb-2">7+</div>
-                        <div class="text-slate-400">Years Active</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-bold stats-number mb-2">∞</div>
-                        <div class="text-slate-400">Commits</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-bold stats-number mb-2">Open</div>
-                        <div class="text-slate-400">Source</div>
-                    </div>
-                </div>
-                <a href="https://github.com/dongitran" target="_blank" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-white mt-8">
-                    <i data-lucide="github" class="w-5 h-5"></i>
+            <div class="text-center mt-12">
+                <a href="https://github.com/dongitran" target="_blank" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                     <span>View GitHub Profile</span>
                 </a>
             </div>
@@ -839,75 +494,48 @@
     <section id="contact" class="py-24 px-4">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16">
-                <span class="text-purple-400 text-sm font-medium tracking-wider uppercase">Contact</span>
+                <span class="text-purple-400 text-sm font-medium uppercase">Contact</span>
                 <h2 class="text-4xl md:text-5xl font-bold mt-4 gradient-text">Let's Connect</h2>
-                <p class="text-slate-400 mt-4 max-w-lg mx-auto">Have a project in mind or want to collaborate? Feel free to reach out. I'm always open to discussing new opportunities.</p>
             </div>
             
             <div class="glass rounded-3xl p-8 md:p-12">
                 <div class="grid md:grid-cols-2 gap-12">
-                    <!-- Contact Info -->
                     <div class="space-y-6">
-                        <h3 class="text-2xl font-bold text-white mb-6">Get in Touch</h3>
-                        
+                        <h3 class="text-2xl font-bold text-white">Get in Touch</h3>
                         <a href="mailto:dongtranthienio@gmail.com" class="flex items-center gap-4 group">
-                            <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/30 transition-colors">
-                                <i data-lucide="mail" class="w-5 h-5 text-purple-400"></i>
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-400"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                             </div>
                             <div>
                                 <div class="text-sm text-slate-500">Email</div>
-                                <div class="text-slate-300 group-hover:text-white transition-colors">dongtranthienio@gmail.com</div>
+                                <div class="text-slate-300">dongtranthienio@gmail.com</div>
                             </div>
                         </a>
-                        
                         <a href="tel:+84767692595" class="flex items-center gap-4 group">
-                            <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/30 transition-colors">
-                                <i data-lucide="phone" class="w-5 h-5 text-purple-400"></i>
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-400"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                             </div>
                             <div>
                                 <div class="text-sm text-slate-500">Phone</div>
-                                <div class="text-slate-300 group-hover:text-white transition-colors">+84 767 692 595</div>
+                                <div class="text-slate-300">+84 767 692 595</div>
                             </div>
                         </a>
-                        
-                        <a href="https://github.com/dongitran" target="_blank" class="flex items-center gap-4 group">
-                            <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/30 transition-colors">
-                                <i data-lucide="github" class="w-5 h-5 text-purple-400"></i>
-                            </div>
-                            <div>
-                                <div class="text-sm text-slate-500">GitHub</div>
-                                <div class="text-slate-300 group-hover:text-white transition-colors">github.com/dongitran</div>
-                            </div>
-                        </a>
-                        
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
-                                <i data-lucide="map-pin" class="w-5 h-5 text-purple-400"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-400"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </div>
                             <div>
                                 <div class="text-sm text-slate-500">Location</div>
-                                <div class="text-slate-300">Vietnam 🇻🇳</div>
+                                <div class="text-slate-300">Vietnam</div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Contact Form -->
-                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('Thank you for your message! I will get back to you soon.');">
-                        <div>
-                            <label class="block text-sm text-slate-400 mb-2">Name</label>
-                            <input type="text" class="contact-input w-full px-4 py-3 rounded-xl text-white" placeholder="Your name" required>
-                        </div>
-                        <div>
-                            <label class="block text-sm text-slate-400 mb-2">Email</label>
-                            <input type="email" class="contact-input w-full px-4 py-3 rounded-xl text-white" placeholder="your@email.com" required>
-                        </div>
-                        <div>
-                            <label class="block text-sm text-slate-400 mb-2">Message</label>
-                            <textarea class="contact-input w-full px-4 py-3 rounded-xl text-white h-32 resize-none" placeholder="Your message..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary w-full py-4 rounded-xl font-medium text-white">
-                            Send Message
-                        </button>
+                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('Thanks! I will reply soon.');">
+                        <input type="text" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:border-purple-500 focus:outline-none" placeholder="Your name" required>
+                        <input type="email" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:border-purple-500 focus:outline-none" placeholder="your@email.com" required>
+                        <textarea class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:border-purple-500 focus:outline-none h-32 resize-none" placeholder="Your message..." required></textarea>
+                        <button type="submit" class="btn-primary w-full py-4 rounded-xl font-medium text-white">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -920,14 +548,11 @@
             <div class="flex items-center gap-2">
                 <span class="text-2xl font-bold gradient-text">DT.</span>
                 <span class="text-slate-500">|</span>
-                <span class="text-slate-500">© 2024 Dong Tran. All rights reserved.</span>
+                <span class="text-slate-500">© 2024 Dong Tran</span>
             </div>
             <div class="flex items-center gap-4">
-                <a href="https://github.com/dongitran" target="_blank" class="text-slate-400 hover:text-white transition-colors">
-                    <i data-lucide="github" class="w-5 h-5"></i>
-                </a>
-                <a href="mailto:dongtranthienio@gmail.com" class="text-slate-400 hover:text-white transition-colors">
-                    <i data-lucide="mail" class="w-5 h-5"></i>
+                <a href="https://github.com/dongitran" target="_blank" class="text-slate-400 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 </a>
             </div>
         </div>
@@ -936,155 +561,6 @@
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
-        
-        // Typing animation
-        const roles = [
-            'Senior Fullstack Developer',
-            'Microservices Architect',
-            'Payment Systems Expert',
-            'AI & Automation Enthusiast'
-        ];
-        let roleIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typingElement = document.getElementById('typing-text');
-        
-        function typeText() {
-            const currentRole = roles[roleIndex];
-            
-            if (isDeleting) {
-                typingElement.textContent = currentRole.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingElement.textContent = currentRole.substring(0, charIndex + 1);
-                charIndex++;
-            }
-            
-            let typeSpeed = isDeleting ? 50 : 100;
-            
-            if (!isDeleting && charIndex === currentRole.length) {
-                typeSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                roleIndex = (roleIndex + 1) % roles.length;
-                typeSpeed = 500;
-            }
-            
-            setTimeout(typeText, typeSpeed);
-        }
-        
-        // Start typing animation
-        setTimeout(typeText, 1000);
-        
-        // GSAP Animations
-        gsap.registerPlugin(ScrollTrigger);
-        
-        // Hero elements animation
-        gsap.from('.hero-element', {
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: 'power3.out'
-        });
-        
-        // About section
-        gsap.from('.about-element', {
-            scrollTrigger: {
-                trigger: '#about',
-                start: 'top 80%',
-            },
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: 'power3.out'
-        });
-        
-        // Experience items
-        gsap.from('.experience-item', {
-            scrollTrigger: {
-                trigger: '#experience',
-                start: 'top 80%',
-            },
-            opacity: 0,
-            x: -30,
-            duration: 0.8,
-            stagger: 0.3,
-            ease: 'power3.out'
-        });
-        
-        // Skill cards
-        gsap.from('.skill-card', {
-            scrollTrigger: {
-                trigger: '#skills',
-                start: 'top 80%',
-            },
-            opacity: 0,
-            y: 40,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: 'power3.out'
-        });
-        
-        // Project cards
-        gsap.from('.project-card', {
-            scrollTrigger: {
-                trigger: '#projects',
-                start: 'top 80%',
-            },
-            opacity: 0,
-            scale: 0.9,
-            duration: 0.6,
-            stagger: 0.15,
-            ease: 'power3.out'
-        });
-        
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        let lastScroll = 0;
-        
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                navbar.classList.add('glass');
-            } else {
-                navbar.classList.remove('glass');
-            }
-            
-            lastScroll = currentScroll;
-        });
-        
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Close mobile menu when clicking a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
     </script>
 </body>
 </html>
