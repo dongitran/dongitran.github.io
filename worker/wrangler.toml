@@ -1,6 +1,7 @@
 name = "contact-form"
-main = "src/index.js"
+main = "src/worker.mjs"
 compatibility_date = "2024-01-01"
 
-[vars]
-# Không đặt secrets ở đây - dùng wrangler secret put
+# Secrets (set via wrangler secret or API):
+# TELEGRAM_BOT_TOKEN
+# TELEGRAM_CHAT_ID
