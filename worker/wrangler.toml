@@ -1,0 +1,6 @@
+name = "contact-form"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+# Không đặt secrets ở đây - dùng wrangler secret put
